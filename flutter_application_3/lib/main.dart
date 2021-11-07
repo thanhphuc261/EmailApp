@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,6 +22,27 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+
+//random số hộp thư của mail
+Random gmail = new Random();
+int gmailNumber = gmail.nextInt(100);
+
+Random icloud = new Random();
+int icloudNumber = icloud.nextInt(100);
+
+Random hotmail = new Random();
+int hotmailNumber = hotmail.nextInt(100);
+
+Random vip = new Random();
+int vipNumber = vip.nextInt(100);
+
+Random secure = new Random();
+int secureNumber = secure.nextInt(100);
+
+Random notifi = new Random();
+int notifiNumber = notifi.nextInt(100);
+
+int total = gmailNumber + icloudNumber + hotmailNumber + vipNumber;
 
 //Page 1 login email
 class _MyHomePageState extends State<MyHomePage> {
@@ -303,7 +324,14 @@ class MailboxPage extends StatefulWidget {
   _MailboxPageState createState() => _MailboxPageState();
 }
 
-bool _isChecked = false;
+bool _isChecked0 = false;
+bool _isChecked1 = false;
+bool _isChecked2 = false;
+bool _isChecked3 = false;
+bool _isChecked4 = false;
+bool _isChecked5 = false;
+bool _isChecked6 = false;
+
 int _all = 0;
 
 class _MailboxPageState extends State<MailboxPage> {
@@ -361,18 +389,18 @@ class _MailboxPageState extends State<MailboxPage> {
               Column(children: [
                 Row(children: [
                   Checkbox(
-                    value: _isChecked,
+                    value: _isChecked0,
                     onChanged: (val) {
-                      if (_isChecked == false)
-                        _isChecked = true;
+                      if (_isChecked0 == false)
+                        _isChecked0 = true;
                       else
-                        _isChecked = false;
+                        _isChecked0 = false;
                       setState(() {});
                     },
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
-                    child: Icon(Icons.star),
+                    child: Icon(Icons.all_inbox),
                   ),
                   Expanded(
                     child: Container(
@@ -388,24 +416,24 @@ class _MailboxPageState extends State<MailboxPage> {
                   Container(
                       padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                       child: Text(
-                        _all.toString(),
+                        total.toString(),
                         style: TextStyle(fontSize: 18),
                       ))
                 ]),
                 Row(children: [
                   Checkbox(
-                    value: _isChecked,
+                    value: _isChecked1,
                     onChanged: (val) {
-                      if (_isChecked == false)
-                        _isChecked = true;
+                      if (_isChecked1 == false)
+                        _isChecked1 = true;
                       else
-                        _isChecked = false;
+                        _isChecked1 = false;
                       setState(() {});
                     },
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
-                    child: Icon(Icons.star),
+                    child: Icon(Icons.cloud_circle_sharp),
                   ),
                   Expanded(
                     child: Container(
@@ -421,24 +449,24 @@ class _MailboxPageState extends State<MailboxPage> {
                   Container(
                       padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                       child: Text(
-                        _all.toString(),
+                        icloudNumber.toString(),
                         style: TextStyle(fontSize: 18),
                       ))
                 ]),
                 Row(children: [
                   Checkbox(
-                    value: _isChecked,
+                    value: _isChecked2,
                     onChanged: (val) {
-                      if (_isChecked == false)
-                        _isChecked = true;
+                      if (_isChecked2 == false)
+                        _isChecked2 = true;
                       else
-                        _isChecked = false;
+                        _isChecked2 = false;
                       setState(() {});
                     },
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
-                    child: Icon(Icons.star),
+                    child: Icon(Icons.star_border),
                   ),
                   Expanded(
                     child: Container(
@@ -454,18 +482,18 @@ class _MailboxPageState extends State<MailboxPage> {
                   Container(
                       padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                       child: Text(
-                        _all.toString(),
+                        gmailNumber.toString(),
                         style: TextStyle(fontSize: 18),
                       ))
                 ]),
                 Row(children: [
                   Checkbox(
-                    value: _isChecked,
+                    value: _isChecked3,
                     onChanged: (val) {
-                      if (_isChecked == false)
-                        _isChecked = true;
+                      if (_isChecked3 == false)
+                        _isChecked3 = true;
                       else
-                        _isChecked = false;
+                        _isChecked3 = false;
                       setState(() {});
                     },
                   ),
@@ -487,18 +515,18 @@ class _MailboxPageState extends State<MailboxPage> {
                   Container(
                       padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                       child: Text(
-                        _all.toString(),
+                        hotmailNumber.toString(),
                         style: TextStyle(fontSize: 18),
                       ))
                 ]),
                 Row(children: [
                   Checkbox(
-                    value: _isChecked,
+                    value: _isChecked4,
                     onChanged: (val) {
-                      if (_isChecked == false)
-                        _isChecked = true;
+                      if (_isChecked4 == false)
+                        _isChecked4 = true;
                       else
-                        _isChecked = false;
+                        _isChecked4 = false;
                       setState(() {});
                     },
                   ),
@@ -520,7 +548,7 @@ class _MailboxPageState extends State<MailboxPage> {
                   Container(
                       padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                       child: Text(
-                        _all.toString(),
+                        vipNumber.toString(),
                         style: TextStyle(fontSize: 18),
                       ))
                 ]),
@@ -536,12 +564,12 @@ class _MailboxPageState extends State<MailboxPage> {
               Column(children: [
                 Row(children: [
                   Checkbox(
-                    value: _isChecked,
+                    value: _isChecked5,
                     onChanged: (val) {
-                      if (_isChecked == false)
-                        _isChecked = true;
+                      if (_isChecked5 == false)
+                        _isChecked5 = true;
                       else
-                        _isChecked = false;
+                        _isChecked5 = false;
                       setState(() {});
                     },
                   ),
@@ -563,18 +591,18 @@ class _MailboxPageState extends State<MailboxPage> {
                   Container(
                       padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                       child: Text(
-                        _all.toString(),
+                        secureNumber.toString(),
                         style: TextStyle(fontSize: 18),
                       ))
                 ]),
                 Row(children: [
                   Checkbox(
-                    value: _isChecked,
+                    value: _isChecked6,
                     onChanged: (val) {
-                      if (_isChecked == false)
-                        _isChecked = true;
+                      if (_isChecked6 == false)
+                        _isChecked6 = true;
                       else
-                        _isChecked = false;
+                        _isChecked6 = false;
                       setState(() {});
                     },
                   ),
@@ -596,24 +624,22 @@ class _MailboxPageState extends State<MailboxPage> {
                   Container(
                       padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                       child: Text(
-                        _all.toString(),
+                        notifiNumber.toString(),
                         style: TextStyle(fontSize: 18),
                       ))
                 ]),
               ]),
-              Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 20),
-                        ),
-                        onPressed: () {},
-                        child: const Text('Delete'),
-                      ),
-                    ])
-                  ])
+              Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      textStyle: const TextStyle(fontSize: 20),
+                    ),
+                    onPressed: () {},
+                    child: const Text('Delete'),
+                  ),
+                ])
+              ])
             ])));
   }
 }
