@@ -13,10 +13,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: MyHomePage(),
     );
   }
@@ -37,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.blue.shade100,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -73,9 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
             //TextField Login Email
             Padding(
-              padding: EdgeInsets.fromLTRB(50, 50, 50, 0),
+              padding: EdgeInsets.fromLTRB(50, 80, 50, 0),
               child: Container(
-                height: 70,
+                height: 60,
                 decoration: BoxDecoration(
                   color: Colors.white,
                 ),
@@ -102,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
               padding: EdgeInsets.fromLTRB(50, 30, 50, 100),
               child: Container(
-                height: 70,
+                height: 60,
                 decoration: BoxDecoration(
                   color: Colors.white,
                 ),
@@ -141,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => ErorPage(),
                       ),
                     );
-                  } else {
+                  } else if (_username == _password) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -175,7 +171,7 @@ class _ErorPageState extends State<ErorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.blue.shade100,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -246,14 +242,14 @@ class _CompletePageState extends State<CompletePage> {
     super.initState();
     Timer(Duration(seconds: 3), () {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => MyApp()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => MailboxPage()));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.blue.shade100,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -297,5 +293,327 @@ class _CompletePageState extends State<CompletePage> {
         ),
       ),
     );
+  }
+}
+
+class MailboxPage extends StatefulWidget {
+  const MailboxPage({Key? key}) : super(key: key);
+
+  @override
+  _MailboxPageState createState() => _MailboxPageState();
+}
+
+bool _isChecked = false;
+int _all = 0;
+
+class _MailboxPageState extends State<MailboxPage> {
+  Map<String, bool> List = {
+    "All inboxes": false,
+    "ICloud": false,
+    "Gmail": false,
+    "Hotmail": false,
+    "VIP": false,
+  };
+  Map<String, bool> List2 = {
+    "Secure": false,
+    "Notifications ": false,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    bool isChecked = false;
+    const title = 'Mailboxes';
+    const tt = 'Mailboxes';
+
+    return MaterialApp(
+        title: title,
+        home: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              backgroundColor: Colors.grey[300],
+              title: const Text(
+                title,
+                style: TextStyle(color: Colors.black),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    'Done ',
+                  ),
+                ),
+              ],
+            ),
+            body: ListView(children: <Widget>[
+              Container(
+                padding: const EdgeInsets.only(left: 14.0, top: 14.0),
+                color: Colors.grey[300],
+                child: Text(
+                  "Mailboxes",
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              Column(children: [
+                Row(children: [
+                  Checkbox(
+                    value: _isChecked,
+                    onChanged: (val) {
+                      if (_isChecked == false)
+                        _isChecked = true;
+                      else
+                        _isChecked = false;
+                      setState(() {});
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
+                    child: Icon(Icons.star),
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(40, 1, 1, 1),
+                        child: Text(
+                          'All inboxes',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.left,
+                        )),
+                  ),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+                      child: Text(
+                        _all.toString(),
+                        style: TextStyle(fontSize: 18),
+                      ))
+                ]),
+                Row(children: [
+                  Checkbox(
+                    value: _isChecked,
+                    onChanged: (val) {
+                      if (_isChecked == false)
+                        _isChecked = true;
+                      else
+                        _isChecked = false;
+                      setState(() {});
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
+                    child: Icon(Icons.star),
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(40, 1, 1, 1),
+                        child: Text(
+                          'ICloud',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.left,
+                        )),
+                  ),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+                      child: Text(
+                        _all.toString(),
+                        style: TextStyle(fontSize: 18),
+                      ))
+                ]),
+                Row(children: [
+                  Checkbox(
+                    value: _isChecked,
+                    onChanged: (val) {
+                      if (_isChecked == false)
+                        _isChecked = true;
+                      else
+                        _isChecked = false;
+                      setState(() {});
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
+                    child: Icon(Icons.star),
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(40, 1, 1, 1),
+                        child: Text(
+                          'Gmail',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.left,
+                        )),
+                  ),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+                      child: Text(
+                        _all.toString(),
+                        style: TextStyle(fontSize: 18),
+                      ))
+                ]),
+                Row(children: [
+                  Checkbox(
+                    value: _isChecked,
+                    onChanged: (val) {
+                      if (_isChecked == false)
+                        _isChecked = true;
+                      else
+                        _isChecked = false;
+                      setState(() {});
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
+                    child: Icon(Icons.star),
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(40, 1, 1, 1),
+                        child: Text(
+                          'Hotmail',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.left,
+                        )),
+                  ),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+                      child: Text(
+                        _all.toString(),
+                        style: TextStyle(fontSize: 18),
+                      ))
+                ]),
+                Row(children: [
+                  Checkbox(
+                    value: _isChecked,
+                    onChanged: (val) {
+                      if (_isChecked == false)
+                        _isChecked = true;
+                      else
+                        _isChecked = false;
+                      setState(() {});
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
+                    child: Icon(Icons.star),
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(40, 1, 1, 1),
+                        child: Text(
+                          'VIP',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.left,
+                        )),
+                  ),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+                      child: Text(
+                        _all.toString(),
+                        style: TextStyle(fontSize: 18),
+                      ))
+                ]),
+              ]),
+              Container(
+                padding: EdgeInsets.all(7),
+                color: Colors.grey[300],
+                child: Text(
+                  "Special folders",
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              Column(children: [
+                Row(children: [
+                  Checkbox(
+                    value: _isChecked,
+                    onChanged: (val) {
+                      if (_isChecked == false)
+                        _isChecked = true;
+                      else
+                        _isChecked = false;
+                      setState(() {});
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
+                    child: Icon(Icons.star),
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(40, 1, 1, 1),
+                        child: Text(
+                          'Secure',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.left,
+                        )),
+                  ),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+                      child: Text(
+                        _all.toString(),
+                        style: TextStyle(fontSize: 18),
+                      ))
+                ]),
+                Row(children: [
+                  Checkbox(
+                    value: _isChecked,
+                    onChanged: (val) {
+                      if (_isChecked == false)
+                        _isChecked = true;
+                      else
+                        _isChecked = false;
+                      setState(() {});
+                    },
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(15, 1, 1, 1),
+                    child: Icon(Icons.star),
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(40, 1, 1, 1),
+                        child: Text(
+                          'Notifications',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.left,
+                        )),
+                  ),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+                      child: Text(
+                        _all.toString(),
+                        style: TextStyle(fontSize: 18),
+                      ))
+                ]),
+              ]),
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 20),
+                        ),
+                        onPressed: () {},
+                        child: const Text('Delete'),
+                      ),
+                    ])
+                  ])
+            ])));
   }
 }
